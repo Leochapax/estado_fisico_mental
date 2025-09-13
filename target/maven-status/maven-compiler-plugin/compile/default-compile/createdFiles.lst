@@ -1,0 +1,10 @@
+servlets\recuperarServlet.class
+api\formulario.class
+servlets\usuarioServlet.class
+servlets\Svinicio_sesion.class
+usuario\usuarioDAO.class
+com\mycompany\estado_fisico_mental\resources\JakartaEE10Resource.class
+conexion\conexionDB.class
+servlets\registroServlet.class
+usuario\usuario.class
+com\mycompany\estado_fisico_mental\JakartaRestConfiguration.class
