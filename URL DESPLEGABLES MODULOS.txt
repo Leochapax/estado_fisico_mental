@@ -1,0 +1,23 @@
+PAGINA PRINCIPAL
+http://localhost:8080/estado_fisico_mental/inicio.jsp
+
+INICIO SESION
+http://localhost:8080/estado_fisico_mental/inicio_sesion.jsp
+
+REGISTRO
+http://localhost:8080/estado_fisico_mental/registro.jsp
+
+RECUPERAR CONTRASEÑA
+http://localhost:8080/estado_fisico_mental/recuperar.jsp
+
+BIENVENIDO
+http://localhost:8080/estado_fisico_mental/bienvenido.jsp
+
+ERROR
+http://localhost:8080/estado_fisico_mental/error.jsp
+
+MENU
+http://localhost:8080/estado_fisico_mental/menu.jsp
+
+USUARIO
+http://localhost:8080/estado_fisico_mental/usuario.jsp
