@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "usuarioServlet", urlPatterns = {"/usuarioServlet"})
 public class usuarioServlet extends HttpServlet {
 
-    usuarioDAO dao = new usuarioDAO();
+    usuarioDAO dao = new usuarioDAO(); // reutilización de código
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +28,7 @@ public class usuarioServlet extends HttpServlet {
 
         switch (action) {
             case "listar":
-                List<usuario> lista = dao.listar();
+                List<usuario> lista = dao.listar(); // Se reutiliza método del DAO
                 request.setAttribute("usuarios", lista);
                 request.getRequestDispatcher("usuario.jsp").forward(request, response);
                 break;
@@ -54,7 +54,7 @@ public class usuarioServlet extends HttpServlet {
 
             case "eliminar":
                 int id = Integer.parseInt(request.getParameter("id"));
-                dao.eliminar(id);
+                dao.eliminar(id); // Se reutiliza código
                 response.sendRedirect("usuarioServlet?action=listar");
                 break;
 
@@ -78,7 +78,7 @@ public class usuarioServlet extends HttpServlet {
                 u1.setEdad(Integer.parseInt(request.getParameter("edad")));
                 u1.setSexo(request.getParameter("sexo"));
                 u1.setObjetivoFisico(request.getParameter("objetivo_fisico"));
-                dao.agregar(u1);
+                dao.agregar(u1); // Se reutiliza código
                 response.sendRedirect("usuarioServlet?action=listar");
                 break;
 
@@ -91,7 +91,7 @@ public class usuarioServlet extends HttpServlet {
                 u2.setEdad(Integer.parseInt(request.getParameter("edad")));
                 u2.setSexo(request.getParameter("sexo"));
                 u2.setObjetivoFisico(request.getParameter("objetivo_fisico"));
-                dao.editar(u2);
+                dao.editar(u2); // Se reutiliza código
                 response.sendRedirect("usuarioServlet?action=listar");
                 break;
         }

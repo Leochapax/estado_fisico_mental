@@ -112,7 +112,8 @@
     <!-- Botones adicionales -->
     <div class="links">
         <a href="registro.jsp">Registrarse</a> | 
-        <a href="recuperar.jsp">¿Olvidaste tu contraseña?</a>
+        <a href="recuperar.jsp">¿Olvidaste tu contraseña?</
+            <a href="inicio.jsp">← Volver al inicio</a>     
     </div>
 </div>
 

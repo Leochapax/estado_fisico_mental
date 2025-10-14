@@ -36,6 +36,19 @@
         font-size: 22px;
         font-weight: bold;
     }
+    .header button {
+        margin-left: auto;
+        padding: 8px 16px;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .header button:hover {
+        background-color: #c0392b;
+    }
 
     /* Contenido */
     h2 {
@@ -43,7 +56,7 @@
         margin-top: 30px;
     }
 
-    button {
+    button.modulo {
         margin: 15px;
         padding: 15px 35px;
         background-color: #e74c3c; /* Rojo */
@@ -54,25 +67,26 @@
         font-weight: bold;
         font-size: 16px;
     }
-    button:hover {
+    button.modulo:hover {
         background-color: #c0392b; /* Rojo oscuro */
     }
 </style>
 </head>
 <body>
 
-    <!-- Franja azul con logo -->
+    <!-- Franja azul con logo y botón inicio -->
     <div class="header">
         <img src="imagenes/Logo_Estado.jpg" alt="Logo">
         <h1>Menú Principal</h1>
+        <button onclick="window.location.href='inicio.jsp'">Inicio</button>
     </div>
 
     <h2>Selecciona una opción</h2>
 
-    <button onclick="window.location.href='RutinaServlet?action=listar'">Rutinas</button>
-    <button onclick="window.location.href='RecetasServlet?action=listar'">Recetas</button>
-    <button onclick="window.location.href='SocializarServlet?action=listar'">Socializar</button>
-    <button onclick="window.location.href='PagosServlet?action=listar'">Pagos</button>
+    <button class="modulo" onclick="window.location.href='rutinaServlet?action=listar'">Rutinas</button>
+    <button class="modulo" onclick="window.location.href='recetaServlet?action=listar'">Recetas</button>
+    <button class="modulo" onclick="window.location.href='socializarServlet?action=listar'">Socializar</button>
+    <button class="modulo" onclick="window.location.href='pagoServlet?action=listar'">Pagos</button>
 
 </body>
 </html>

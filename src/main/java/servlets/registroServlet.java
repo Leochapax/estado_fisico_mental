@@ -17,7 +17,7 @@ import usuario.usuarioDAO;
 @WebServlet(name="RegistroServlet", urlPatterns={"/RegistroServlet"})
 public class registroServlet extends HttpServlet {
 
-    usuarioDAO dao = new usuarioDAO();
+    usuarioDAO dao = new usuarioDAO(); // reutilización de código
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -39,7 +39,7 @@ public class registroServlet extends HttpServlet {
         u.setSexo(request.getParameter("sexo"));
         u.setObjetivoFisico(request.getParameter("objetivo_fisico"));
 
-        boolean agregado = dao.agregar(u);
+        boolean agregado = dao.agregar(u); // Reutiliza método centralizado para agregar usuarios
 
         if(agregado){
             // Guardar usuario y tipo de mensaje en sesión

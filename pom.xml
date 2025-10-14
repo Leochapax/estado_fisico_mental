@@ -19,6 +19,29 @@
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
+        
+        <!-- Dependencia para pruebas unitarias con JUnit 5 -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.2</version>
+        <scope>test</scope>
+    </dependency>
+    
+    <!-- JUnit Platform Suite (para usar @Suite y @SelectClasses) -->
+<dependency>
+    <groupId>org.junit.platform</groupId>
+    <artifactId>junit-platform-suite</artifactId>
+    <version>1.10.2</version>
+    <scope>test</scope>
+</dependency>
+    
+    <!-- Conector MySQL para JDBC -->
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>8.0.33</version>
+</dependency>
     </dependencies>
     
     <build>
