@@ -5,7 +5,7 @@ FROM tomcat:10.1-jdk17
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copia tu WAR al directorio webapps de Tomcat
-COPY objetivo/estado_fisico_mental-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+COPY target/estado_fisico_mental-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
 # Configura el puerto que Render asigna
 ENV CATALINA_OPTS="-Dserver.port=$PORT"
