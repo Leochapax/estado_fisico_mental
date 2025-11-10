@@ -129,9 +129,10 @@
     <!-- Login funcional sin alterar diseño -->
     <div class="login-area">
       <!-- FORMULARIO de LOGIN -->
-      <form action="procesarFormulario" method="post">
+      <form action="Svinicio_sesion" method="post">
         <input type="text" name="usuario" placeholder="USUARIO" required>
         <input type="password" name="clave" placeholder="CONTRASEÑA" required>
+        <input type="hidden" name="accion" value="login">
         <button type="submit">INGRESAR</button>
       </form>
 

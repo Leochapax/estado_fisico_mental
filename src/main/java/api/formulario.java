@@ -4,29 +4,27 @@
  */
 package api;
 
+import conexion.conexionDB;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 /**
  *
  * @author ferca
  */
 @WebServlet("/procesarFormulario")
-        
-      public class formulario extends HttpServlet {
-
-    private static final String USUARIO_VALIDO = "leonardo";
-    private static final String CLAVE_VALIDA = "Melissa25+";
+public class formulario extends HttpServlet {
 
     @Override
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.html");
+        response.sendRedirect("index.html"); // página principal
     }
 
     @Override
@@ -34,14 +32,35 @@ import jakarta.servlet.http.HttpServletResponse;
 
         String usuario = request.getParameter("usuario");
         String clave = request.getParameter("clave");
-        if (USUARIO_VALIDO.equals(usuario) && CLAVE_VALIDA.equals(clave)) {
-            request.getRequestDispatcher("bienvenido.jsp").forward(request, response);
 
-        } else {
-            request.setAttribute("error", "usuario o clave incorrectos");
-            request.setAttribute ("errorExist", true);
+        try (Connection conn = conexionDB.getConnection()) {
+
+            String sql = "SELECT * FROM usuario WHERE (email = ? OR nombre = ?) AND password = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, usuario);
+            stmt.setString(2, usuario);
+            stmt.setString(3, clave);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Inicio de sesión exitoso
+                request.getSession().setAttribute("usuarioLogueado", rs.getString("nombre"));
+                request.getSession().setAttribute("emailUsuario", rs.getString("email"));
+                request.getRequestDispatcher("bienvenido.jsp").forward(request, response);
+
+            } else {
+                // Usuario incorrecto
+                request.setAttribute("error", "Usuario o contraseña incorrectos");
+                request.setAttribute("errorExist", true);
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Error al conectar con la base de datos");
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-
     }
 }
